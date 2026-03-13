@@ -1,17 +1,51 @@
 package org.example;
+import Entities.Products;
+import java.util.Locale;
+import  java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+    static void main(String[] args) {
+
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+
+        Products product = new Products();
+
+        System.out.println("Enter product data");
+        System.out.println("Name : ");
+
+        product.name = sc.nextLine();
+
+        System.out.println("Price : ");
+
+        product.price = sc.nextDouble();
+
+        System.out.println("Quantity in stock : ");
+        product.quantity = sc.nextInt();
+
+        System.out.println();
+        System.out.println("Product data : " + product);
+
+        System.out.println();
+        System.out.println("Enter the number of products to be added in stock : ");
+
+        int quantity = sc.nextInt();
+
+        product.addProducts(quantity);
+
+        System.out.println();
+        System.out.println("Updated data : " + product);
+
+        System.out.println();
+        System.out.println("Enter the number of products to be removed from stock : ");
+
+        quantity = sc.nextInt();
+        product.removeProducts(quantity);
+
+        System.out.println();
+        System.out.println("Updated data : " + product);
+
+       sc.close();
     }
 }
